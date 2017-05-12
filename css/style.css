@@ -1,0 +1,520 @@
+/* 
+(.) antes da palavra quando é class! 
+(#) antes de palavra é quando é id! 
+(*) antes da palavra quando é para aplicar propriedades no site inteiro! */
+
+
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800');
+/* se eu colocar essa tag aqui (@import no google fonts), não preciso colocar mais nada no html)
+
+
+/*ESTILOS PADRÕES (do site todo)*/
+body{
+	margin: 0;
+	font-family: "Open Sans";
+	padding-top: 40px;
+}
+
+.container{
+	width: 1140px;
+	margin: 0 auto; /*para alinhar ele todo no centro*/
+}
+
+.linha{
+	display: flex; /* para posicionar as coisas lado a lado*/
+}
+
+	.linha.espacoEntre{ /*um elemento que tem linha E espacoEntre*/
+		justify-content: space-between;
+	}
+
+	.linha.alinharVertical{
+		align-items: center;
+	}
+
+h1:first-child{ /*o h1 já vem com uma margem automática. precisamos consertá-la aqui (não é legal colocarmos direto no * pq isso seria "css reset", o que não é considerado uma boa prática). first-child é o primeiro filho. O : aqui significa que é uma "condição especial"; */
+	margin-top: 0;
+}
+
+a{
+	text-decoration: none; /*para tirar o sublinhado que fica nos links (ou qualquer outra "decoração")*/
+}
+
+ul{
+	list-style-type: none; /*para tirar as bolinhas nos itens da lista*/
+}
+
+*{
+	color: #383838; /*para mudar a cor dos textos*/
+	box-sizing: border-box;
+}
+
+.centralizador{
+	display: flex; 
+	flex-direction: column;
+	align-items: center; /*essa tag só funciona se tiver um display flex antes "ligando" ela */
+	justify-content: center;
+}
+
+.botao{
+	font-family: "Open Sans";
+	font-size: 12px;
+	font-weight: 600;
+	padding: 7px 13px;
+	background: white;
+	border: solid 1px #CCC;
+	border-radius: 16px;
+	margin: 10px;
+	cursor: pointer; /* pro cursor virar uma mãozinha */
+}
+
+.botao .fa{ /*significa que todo ícone dentro de algum botão, terá essas propriedades*/
+	margin-left: 5px;
+}
+
+.botao .fa:only-child{ /* isso significa que todo .fa que estiver sozinho dentro de um botão vai receber a propriedade abaixo  */
+	margin-left: 0px;
+}
+
+	.botao.amei{
+		background: purple;
+		color: white;
+	}
+
+	.botao.amei.clicado{
+		background: red;
+	}
+
+	.botao.amei span,
+	.botao.amei .fa{ /* colocamos .fa ao invés de i pq i no css significa itálico. vai entender pq o fontAwesome estipulou que a tag devia ter um i....*/
+		color: rgba(255, 255, 255, 0.9);
+	}
+
+
+
+
+body section,
+body main{
+	padding-top: 20px;
+}
+
+/*FIM ESTILOS PADRÕES*/
+
+
+/*CABEÇALHO*/
+#cabecalho{
+	width: 100%;
+	background-color: purple;
+	position: fixed; /*fixed torna a tag fixa e deve ser acompanhada de mais um atributo: top, left, right e/ou bottom*/
+	top: 0px;
+	left: 0px;
+	z-index: 10; /*z-index só funciona com a propriedade "position */
+}
+
+#cabecalho .container{ /* tem espaço antes do ponto pq significa que está procurando uma tag container que está dentro de cabecalho*/
+	height: 40px;
+	} 
+
+#cabecalho a{ /* "todo a que estiver dentro do id cabeçalho receberá as seguintes propriedades: " */
+	color: white;
+	font-family: "Open Sans";
+	font-weight: 400;
+	font-size: 14px;
+}
+
+#cabecalho .fa{ 
+	color: white;
+}
+
+.menuHorizontal ul{
+	margin: 0;
+	padding: 0;
+}
+
+.menuHorizontal a{
+	padding: 0 10px;
+}
+
+.botao.menuHamburguer{
+	background: none;
+	display: none;
+}
+
+
+/* FIM CABEÇALHO*/
+
+
+
+
+
+/*SLIDER*/
+#slider{
+	height: calc(100vh - 40px); /*vh = área de visualização do site na sua tela (o que aparece antes de vc dar o primeiro scrow) / 100 = porcentagem da view port / 100vh - 40px pq colocamos 40px de padding top no body, lá em cima*/ 
+	width: 100%;
+	padding-top: 0px;
+	position: relative;
+}
+
+#slider .seta .fa{
+	color: white;
+}
+
+#slider .seta{
+	position: absolute;
+	font-size: 44px; /*os ícones do font awesome são fontes, então posso colocar assim*/
+	top: 250px;
+	background: none;
+	border: none;
+	top: 50%;
+	transform: translateY(-50%); /* move o objeto tendo como referência ele mesmo / Y pq é na vertical; se fosse na horizontal seria X */
+	z-index: 5;
+
+}
+
+
+
+#slider .seta.esqueda{
+	left: 0px;
+}
+
+#slider .seta.direita{
+	right: 0px;
+}
+
+#slider .bullets{
+	position: absolute; 
+	bottom: 0px;
+	left: 50%;
+	transform: translateX(-50%); /* move o objeto tendo como referência ele mesmo / X pq é na horizontal; se fosse na vertical seria Y */
+	z-index: 5;
+}
+
+
+.slideBox{
+	height: 100%;
+
+}
+
+.slide{
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+
+	transition: all 1s ease;
+	opacity: 0;	/* opacity:0 pra manter o objeto e só torná-lo invisível. Se eu fosse usar o display none, ele ia sumir pra sempre*/
+
+}
+
+.slide h3{
+	color: white;
+	font-size: 32px;
+}
+
+.slide img{
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	object-fit: cover; /*para não distorcer a imagem, senão ficaria achatada */
+	z-index: -1;
+
+}
+
+.slide.ativo{
+	display: flex;
+	opacity: 1;
+	z-index: 1;
+}
+
+
+
+.bullet{
+	height: 15px;
+	width: 15px;
+	border-radius: 50%;
+	border: none;
+	background: #e6e6e6;
+	margin: 0 10px;
+}
+
+#slogan *{ /* O * vai selecionar todos os filhos dessa tag. Assim é mais fácil, mas outra alternativa seria colocar assim: #slogan h1, #slogan h2{  } */
+ 	color: white; /*se não colocasse o *, ele não ia conseguir aplicar essa cor */
+ }
+
+#slogan h1{
+	height: 81px;
+	width: 500px;
+	max-width: 100%; /* significa que vai ter no máximo o tamanho do pai */
+	background: url(../imgs/logo.png) no-repeat; /* esse é um jeito de enxugar o negócio. Mas eu poderia fazer assim: background-image: url(../imgs/logo.png); e aí depois colocar embaixo background-repeat: no-repeat; */
+
+	/*vamos usar as tags abaixo para que o logo fique no lugar do escrito "reprograma" mas que ele não perca "pontos" no SEO */
+	overflow: hidden; /*se alguém passar dos limites da área que coloquei nesse h1, esse alguém vai desaparecer */
+	text-indent: -99999px; /*só identa. é a combinação dessa tag e da tag de cima que vai fazer o negócio desaparecer*/
+}
+
+#slogan h2{
+	text-align: center;
+}
+/*FIM SLIDER*/
+
+
+/*VALORES*/
+.card{
+	padding: 50px;
+	display: flex;
+	flex-direction: column; /* por padrão o display flex faz as coisas se alinharem em uma linha, lado a lado. Assim a gente faz ele alinhar dentro da coluna */
+	align-items: center;
+}
+
+.card .textos{
+	text-align: center;
+}
+
+.card img{
+	height: 100px; /*observar os ícones e ponderar qual dos lados é melhor setar */
+}
+
+#navegacaoPrimaria{
+	display: flex;
+}
+/*FIM VALORES*/
+
+
+
+/* FORMULÁRIO */
+
+.form-group{ 
+	margin-bottom: 0.5em; 
+}
+
+/* vertical */
+.form-group label, input{ 
+	display: block;
+	margin-right: 60px;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: #ddd;
+}
+
+.form-group input:valid,
+.form-group textarea:valid {
+  border: 1px solid green;
+}
+
+/* invalido */
+.form-group input:invalid,
+.form-group textarea:invalid {
+  border: 1px solid red;
+}
+
+
+textarea, input {
+	width: 400px;
+}
+
+/*///////////////////////////////////////////////////////////*/
+
+label{
+	margin-left: 10px;
+	margin-bottom: 5px;
+}
+
+.contato-box-form-section input::placeholder{
+	padding-left: 10px;
+}
+
+
+.contato-box {
+  box-shadow: 0 2px 4px rgba(10, 10, 10, 0.4);
+  background: #fefefe;
+  border-radius: 0;
+  overflow: hidden;
+
+  width: 500px;
+  margin: 0 auto;
+}
+
+.contato-box .or {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  display: inline-block;
+  min-width: 2.1em;
+  padding: 0.3em;
+  border-radius: 50%;
+  font-size: 0.6rem;
+  text-align: center;
+  font-size: 1.275rem;
+  background: #cacaca;
+  box-shadow: 0 2px 4px rgba(10, 10, 10, 0.4);
+}
+
+@media screen and (max-width: 39.9375em) {
+  .contato-box .or {
+    top: 85%;
+  }
+}
+
+.contato-box-title {
+  font-weight: 300;
+  font-size: 1.875rem;
+  margin-bottom: 1.25rem;
+}
+
+.contato-box-form-section,
+.contato-box-social-section-inner {
+  padding: 2.5rem;
+}
+
+.contato-box-social-section {
+  background: url("https://images.pexels.com/photos/179124/pexels-photo-179124.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb");
+  background-size: cover;
+  background-position: center;
+}
+
+.contato-box-input {
+  margin-bottom: 1.25rem;
+  height: 2rem;
+  border: 0;
+  padding-left: 0;
+  box-shadow: none;
+  border: 1px solid purple;
+  border-radius: 16px;
+  font-weight: 400;
+}
+
+.contato-box-input:focus {
+  color: #1779ba;
+  transition: 0.2s ease-in-out;
+  box-shadow: none;
+  border: 0;
+  border-bottom: 2px solid #1779ba;
+}
+
+.contato-box-submit-button {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 0 1rem 0;
+  padding: 0.85em 1em;
+  -webkit-appearance: none;
+  border: 1px solid transparent;
+  border-radius: 0;
+  transition: background-color 0.25s ease-out, color 0.25s ease-out;
+  font-size: 0.9rem;
+  line-height: 1;
+  text-align: center;
+  cursor: pointer;
+  background-color: purple;
+  color: #fefefe;
+  display: block;
+  width: 400px;
+  margin-right: 0;
+  margin-left: 0;
+  border-radius: 0;
+  text-transform: uppercase;
+  margin-bottom: 0;
+}
+
+[data-whatinput='mouse'] .contato-box-submit-button {
+  outline: 0;
+}
+
+.contato-box-submit-button:hover, .contato-box-submit-button:focus {
+  background-color: #126195;
+  color: #fefefe;
+}
+
+.contato-box-submit-button:hover,
+.contato-box-submit-button:focus {
+  box-shadow: 0 2px 4px rgba(10, 10, 10, 0.4);
+}
+
+.lcontato-box-submit-button:active {
+  box-shadow: 0 1px 2px rgba(10, 10, 10, 0.4);
+}
+
+
+/* FIM FORMULÁRIO */
+
+
+
+/*TABLET*/
+@media (max-width: 1140px){ /* esse é o momento em que o layout se transforma */
+	.container{
+	width: 700px;
+	}
+
+	.botao.menuHamburguer{
+	display: block;
+	}
+
+	.cardContainer{
+		flex-wrap: wrap;
+		justify-content: center;
+	}
+
+	.card{
+		width: 50%;
+	}
+
+	#cabecalho .container{
+		position: relative;
+	}
+
+	#navegacaoPrimaria{
+		display: none;
+		position: absolute;
+		top: 40px;
+		width: 100%;
+	}
+
+	#navegacaoPrimaria ul{
+		flex-direction: column;
+	}
+
+	#navegacaoPrimaria a{
+		display: block;
+		padding: 20px 0px;
+		padding-left: 20px;
+		background: white;
+		color: #282828;
+	}
+
+	#navegacaoPrimaria.visivel{
+		display: block;
+	}
+
+}
+/* FIM TABLET*/
+
+
+
+
+
+
+/*SMARTPHONE*/
+@media (max-width: 700px){
+	.container{
+	width: 100%; /* pq existem muitas larguras de celulares*/
+	}
+
+	#slogan h1{
+	width: 300px;
+	background-size: contain;
+	margin: auto;
+	}
+
+	.cardContainer .card{
+		width: 100%;
+	}
+}
+
+/*FIM SMARTPHONE*/

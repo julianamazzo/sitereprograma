@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+
+
+<head>
+  <title> Reprograma - Contato </title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link rel="stylesheet" type="text/css" href="css/font-awesome.css">
+  <meta name="viewport" content="width=device-width, user-scalable=no">
+
+</head>
+
+
+<body>
+<!-- MENU HORIZONTAL -->
+  <header id="cabecalho">
+
+    <div class="container linha espacoEntre alinharVertical">
+
+      <button class="botao menuHamburguer"> 
+        <i class="fa fa-bars"></i>
+      </button>
+
+      <nav class="menuHorizontal" id="navegacaoPrimaria">
+        <ul class="linha"> <!-- a classe linha está aqui pq ela vai alinhar os filhos (que são as li's) dentro do pai -->
+          <li> <a href="index.html"> HOME </a> </li>
+          <li> <a href="contato.html"> CONTATO </a> </li>
+          <li> <a href=""> QUEM SOMOS </a> </li>
+        </ul>
+      </nav>
+      
+      <nav class="menuHorizontal" id="navegacaoMidiasSociais">
+        <ul class="linha">
+          <li>
+            <a href="#facebook">
+              <i class="fa fa-facebook">  
+              </i>
+            </a>
+          </li>
+          <li>
+            <a href="#twitter">
+              <i class="fa fa-twitter">
+              </i>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="fa fa-instagram">
+              </i>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+    </div>
+  </header>
+  <!-- FIM MENU HORIZONTAL --> 
+
+
+
+<!-- INÍCIO FORMULÁRIO -->
+	<form action=""> <!-- form action = destino pra onde vai o formulário -->
+    <div class="form-group">
+      <label for="nome">Nome</label>
+      <input type="text" name="nome" required placeholder="Seu nome completo">
+    </div>
+
+    <div class="form-group">
+      <label for="email">E-mail</label>
+      <input type="email" name="email" required placeholder="eu@site.com">
+    </div> <!-- o required é o responsável pelo pedido do email caso o usuário não coloque -->
+
+    <div class="form-group">
+      <label for="mensagem">Mensagem</label>
+      <textarea name="mensagem"
+                cols="50"
+                rows="4"
+                maxlength="100"
+                required
+                data-contador-fonte
+                placeholder="Seu textão, em até 100 caracteres."></textarea>
+      <span data-contador-destino>100</span>
+    </div>
+    
+    <input type="submit" value="Enviar">
+  </form>
+
+  <!-- FIM FORMULÁRIO -->
+
+<!--ref: http://foundation.zurb.com/building-blocks/blocks/login-box.html -->
+<div class="contato-box">
+  <div class="contato-box-form-section">
+
+      <h1 class="contato-box-title">Contato</h1>
+
+      <div class="form-group">
+        <label for="nome">Nome</label>
+        <input class="contato-box-input" type="text" name="nome" required placeholder="Seu nome completo" /> </div>
+          
+        <div class="form-group">  
+        <label for="email">E-mail</label>
+        <input class="contato-box-input" type="email" name="email" required placeholder="eu@site.com" /> </div>
+         
+        <div class="form-group"> 
+        <label for="mensagem">Mensagem</label>  
+        <textarea 
+            name="mensagem"
+            cols="50"
+            rows="4"
+            maxlength="100"
+            required
+            data-contador-fonte 
+            placeholder="Sua mensagem (até 100 caracteres)"> <!-- data-contador-fonte é uma propriedade personalizada/criada por mim. Sempre que vou fazer isso, tenho que começar com "data-" -->
+        </textarea>
+
+        <span data-contador-destino>100</span>
+
+      </div>
+
+      <input class="contato-box-submit-button" type="submit" name="signup_submit" value="enviar" />
+  </div>
+</div>
+
+
+
+
+	<script type="text/javascript" src="script/script.js"></script>
+
+</body>
+</html>
